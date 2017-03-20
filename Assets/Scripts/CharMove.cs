@@ -1,5 +1,6 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
+using UnityEngine.UI; 
 
 public class CharMove : MonoBehaviour
 {
@@ -9,12 +10,14 @@ public class CharMove : MonoBehaviour
 
     public float sprint;
     private bool isSprint = false;
-    public float stamina = 50.0f;
 
     public float xForce;
     public float yForce;
 
     public bool canMove;
+    public bool canSprint;
+
+    public Slider StaminaSlider;
 
     // Use this for initialization
     void Start()
@@ -29,6 +32,7 @@ public class CharMove : MonoBehaviour
         {
             return;
         }
+        canSprint = true;
 
         transform.rotation = Quaternion.Euler(0, camera.GetComponent<MouseLook>().currentYRotation, 0);
 
@@ -49,6 +53,12 @@ public class CharMove : MonoBehaviour
         else
         {
             transform.Translate(new Vector3(xForce * sprint, 0, yForce * sprint));
+            StaminaSlider.value -= .1f;
+        }
+
+        if (StaminaSlider.value == 0)
+        {
+            canSprint = false;
         }
 
         isSprint = false;
