@@ -20,6 +20,7 @@ public class Swing : MonoBehaviour
 
     void Update()
     {
+        //yeah
         //horizontal = Input.GetAxis("Fire1") * swingSpeed;
         //vertical = Input.GetAxis("Fire2") * swingSpeed;
         //stab = Input.GetAxis("Fire3") * swingSpeed;
