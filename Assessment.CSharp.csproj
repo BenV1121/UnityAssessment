@@ -77,7 +77,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CharMove.cs" />
     <Compile Include="Assets\Scripts\DamageTrigger.cs" />
+    <Compile Include="Assets\Scripts\DoorScript.cs" />
+    <Compile Include="Assets\Scripts\EnemyDamageTrigger.cs" />
     <Compile Include="Assets\Scripts\EnemyHealth.cs" />
+    <Compile Include="Assets\Scripts\Interact.cs" />
     <Compile Include="Assets\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Swing.cs" />
