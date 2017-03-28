@@ -8,12 +8,20 @@ public class EnemyDamageTrigger : MonoBehaviour
     public float damageOverTime = 5.0f;
 
     private List<IDamageable> occupants = new List<IDamageable>();
+    public bool shouldIgnoreEnemy = false;
 
     private void OnTriggerEnter(Collider other)
     {
         IDamageable target = other.gameObject.GetComponent<IDamageable>();
 
         if (target == null) { return; }
+        if (shouldIgnoreEnemy)
+        {
+            if (other.gameObject.CompareTag("Enemy"))
+            {
+                return; // abort, no need to do damage
+            }
+        }
 
         target.TakeDamage(damageOnContact);
 

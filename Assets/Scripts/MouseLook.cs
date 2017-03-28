@@ -15,7 +15,7 @@ public class MouseLook : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
-	
+	    
 	}
 	
 	// Update is called once per frame
@@ -30,6 +30,21 @@ public class MouseLook : MonoBehaviour
         currentYRotation = Mathf.SmoothDamp(currentYRotation, yRotation, ref yRotationV, lookSmoothDamp);
 
         transform.rotation = Quaternion.Euler(currentXRotation, currentYRotation, 0);
+
         //transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-	}
+
+        Lock();
+    }
+
+    void Lock()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftAlt) && Cursor.lockState == CursorLockMode.None)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else if (Input.GetKeyDown(KeyCode.LeftAlt) && Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
 }

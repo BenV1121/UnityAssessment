@@ -9,7 +9,7 @@ public class CharMove : MonoBehaviour
     public float Force;
     public float JumpForce;
 
-    public float sprint;
+    public float dash;
     private bool isSprint = false;
 
     public float xForce;
@@ -17,14 +17,14 @@ public class CharMove : MonoBehaviour
     public float jump;
 
     public bool canMove;
-    public bool canSprint;
+    public bool canDash;
 
-    public Slider StaminaSlider;
+    public Image Stamina;
 
     // Use this for initialization
     void Start()
     {
-
+        Stamina = GameObject.FindGameObjectWithTag("sp").GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class CharMove : MonoBehaviour
         {
             return;
         }
-        canSprint = true;
+        canDash = true;
 
         transform.rotation = Quaternion.Euler(0, camera.GetComponent<MouseLook>().currentYRotation, 0);
 
@@ -57,13 +57,21 @@ public class CharMove : MonoBehaviour
 
         else
         {
-            transform.Translate(new Vector3(xForce * sprint, 0, yForce * sprint));
-            StaminaSlider.value -= .1f;
+            if (Stamina.fillAmount >= 20)
+            { 
+                transform.Translate(new Vector3(dash, 0, dash));
+                Stamina.fillAmount -= 20f;
+            }
         }
 
-        if (StaminaSlider.value == 0)
+        if (Stamina.fillAmount < 200)
         {
-            canSprint = false;
+            Stamina.fillAmount += .05f;
+        }
+
+        if (Stamina.fillAmount == 0)
+        {
+            canDash = false;
         }
 
         isSprint = false;

@@ -9,11 +9,20 @@ public class DamageTrigger : MonoBehaviour
 
     private List<IDamageable> occupants = new List<IDamageable>();
 
+    public bool shouldIgnorePlayer = false;
+
     private void OnTriggerEnter(Collider other)
     {
         IDamageable target = other.gameObject.GetComponent<IDamageable>();
 
         if (target == null) { return; }
+        if(shouldIgnorePlayer)
+        {
+            if(other.gameObject.CompareTag("Player"))
+            {
+                return; // abort, no need to do damage
+            }
+        }
 
         target.TakeDamage(damageOnContact);
 

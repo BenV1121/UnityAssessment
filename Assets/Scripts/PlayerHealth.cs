@@ -20,7 +20,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public float healthValue = 100;
     //public float armorValue = 20;
 
-    public Slider HealthSlider;
+    Image Health;
+
+    void Start()
+    {
+        Health = GameObject.FindGameObjectWithTag("hp").GetComponent<Image>();
+    }
 
     public float EstimatedDamageTaken(float damageDealt)
     {
@@ -30,7 +35,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void TakeDamage(float damageDealth)
     {
         healthValue -= damageDealth;
-        HealthSlider.value -= 5f;
+        Health.fillAmount = healthValue / 100;
     }
 }
 
