@@ -34,6 +34,11 @@ public class DamageTrigger : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter(Collision col)
+    {
+
+    }
+
     private void OnTriggerExit(Collider other)
     {
         IDamageable target = other.gameObject.GetComponent<IDamageable>();

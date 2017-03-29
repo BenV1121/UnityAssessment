@@ -19,6 +19,7 @@ public class CharMove : MonoBehaviour
     public bool canMove;
     public bool canDash;
 
+    public float staminaValue = 200;
     public Image Stamina;
 
     // Use this for initialization
@@ -53,23 +54,24 @@ public class CharMove : MonoBehaviour
         if (isSprint != true)
         {
             transform.Translate(new Vector3(xForce, 0, yForce));
+            Stamina.fillAmount = staminaValue / 200;
         }
 
         else
         {
-            if (Stamina.fillAmount >= 20)
+            if (staminaValue >= 20)
             { 
                 transform.Translate(new Vector3(dash, 0, dash));
-                Stamina.fillAmount -= 20f;
+                staminaValue -= 20f;
             }
         }
 
-        if (Stamina.fillAmount < 200)
+        if (staminaValue < 200)
         {
-            Stamina.fillAmount += .05f;
+            staminaValue += .05f;
         }
 
-        if (Stamina.fillAmount == 0)
+        if (staminaValue == 0)
         {
             canDash = false;
         }

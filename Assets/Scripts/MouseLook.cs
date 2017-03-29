@@ -38,11 +38,10 @@ public class MouseLook : MonoBehaviour
 
     void Lock()
     {
-        if (Input.GetKeyDown(KeyCode.LeftAlt) && Cursor.lockState == CursorLockMode.None)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftAlt) && Cursor.lockState == CursorLockMode.Locked)
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = (false);
+
+        if(Input.GetKey(KeyCode.Escape))
         {
             Cursor.lockState = CursorLockMode.None;
         }
