@@ -5,9 +5,12 @@ using UnityEngine;
 public class EnemySwing : MonoBehaviour
 {
 
-    static Animator anim;
+    public Animator anim;
     public float attackTimer = 0;
     public float attackDelay = 2.2f;
+    public float idleTimer = 0;
+    public float idleDelay = 3;
+    public bool swingFinished = false;
 
     //public float swingSpeed = 0.1f;
 
@@ -22,17 +25,27 @@ public class EnemySwing : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(swingFinished);
+
         //yeah
         //horizontal = Input.GetAxis("Fire1") * swingSpeed;
         //vertical = Input.GetAxis("Fire2") * swingSpeed;
         //stab = Input.GetAxis("Fire3") * swingSpeed;
 
-        anim.SetBool("isHAttacking", false);
+        //anim.SetBool("isHAttacking", false);
         attackTimer -= Time.deltaTime;
-        if (attackTimer < 0)
+        if (!swingFinished)
         {
-            attackTimer += attackDelay;
             anim.SetBool("isHAttacking", true);
+            }
+            if (swingFinished)
+            {
+                anim.SetBool("isHAttacking", false);
+                idleTimer -= Time.deltaTime;
+                if (idleTimer < 0)
+                {
+                    //swingFinished = false;
+                }
         }
     }
 }
