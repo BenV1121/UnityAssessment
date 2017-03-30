@@ -45,9 +45,9 @@ GameObject:
   - component: {fileID: 23869059517450612}
   - component: {fileID: 54389184172537946}
   - component: {fileID: 114277888028780310}
-  - component: {fileID: 114145905751479392}
   - component: {fileID: 195799129326914274}
   - component: {fileID: 135701112105015864}
+  - component: {fileID: 114042922166910078}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -214,7 +214,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114145905751479392
+--- !u!114 &114042922166910078
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -263,8 +263,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd00f837f58b90e4291b2771dd4bef3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   attackTimer: 0
   attackDelay: 2.2
+  idleTimer: 0
+  idleDelay: 3
+  swingFinished: 0
 --- !u!135 &135701112105015864
 SphereCollider:
   m_ObjectHideFlags: 1

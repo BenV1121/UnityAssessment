@@ -19,6 +19,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 {
     public float healthValue = 100;
     //public float armorValue = 20;
+    public bool isDead = false;
 
     Image Health;
 
@@ -36,6 +37,24 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         healthValue -= damageDealth;
         Health.fillAmount = healthValue / 100;
+
+        if (Health.fillAmount <= 0)
+        {
+            Death();
+        }
+    }
+
+    public void Update()
+    {
+        if (isDead)
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
+    }
+
+    void Death()
+    {
+        isDead = true;
     }
 }
 

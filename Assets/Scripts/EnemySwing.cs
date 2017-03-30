@@ -25,8 +25,6 @@ public class EnemySwing : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(swingFinished);
-
         //yeah
         //horizontal = Input.GetAxis("Fire1") * swingSpeed;
         //vertical = Input.GetAxis("Fire2") * swingSpeed;

@@ -6,7 +6,7 @@ public class BossFollow : MonoBehaviour
 {
     Transform player;
     PlayerHealth playerHealth;
-    EnemyHealth enemyHealth;
+    BossHealth bossHealth;
     UnityEngine.AI.NavMeshAgent nav;
     Rigidbody enemyRigidbody;
     MeshRenderer enemyMesh;
@@ -16,7 +16,7 @@ public class BossFollow : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerHealth = player.GetComponent<PlayerHealth>();
-        enemyHealth = GetComponent<EnemyHealth>();
+        bossHealth = GetComponent<BossHealth>();
         nav = GetComponent<UnityEngine.AI.NavMeshAgent>();
         enemyRigidbody = GetComponent<Rigidbody>();
         enemyMesh = GetComponent<MeshRenderer>();
@@ -25,9 +25,9 @@ public class BossFollow : MonoBehaviour
 
     void Update()
     {
-        if (enemyHealth.healthValue > 0 && playerHealth.healthValue > 0)
+        if (bossHealth.healthValue > 0 && playerHealth.healthValue > 0)
         {
-            nav.SetDestination(player.position);
+            nav.SetDestination(new Vector3(player.position.x - .5f, player.position.y, player.position.z - .5f));
         }
         else
         {
